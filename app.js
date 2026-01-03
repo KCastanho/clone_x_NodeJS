@@ -5,12 +5,12 @@ const app = express();
 const cookieParser = require('cookie-parser');
 
 // IMPORT ROUTES
-
+const userRouter = require('./router/user.router');
 
 
 
 // CONNECTION MONGO
-connectDB(ENV.MONGO_URI_LOCAL, ENV.DB_NAME)
+connectDB(ENV.MONGO_URI_LOCAL, ENV.DB_NAME);
 
 
 // MIDDLEWARES
@@ -20,7 +20,7 @@ app.use(express.json());
 
 
 // PREFIX
-
+app.use('/api/user', userRouter);
 
 
 // MIDDLEWARE DE GESTION D'ERREURS

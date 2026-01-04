@@ -12,7 +12,7 @@ const messageRouter = require("./router/message.rooter");
 
 
 // CONNECTION MONGO
-connectDB(ENV.MONGO_URI_LOCAL, ENV.DB_NAME);
+connectDB(process.env.MONGO_URI || ENV.MONGO_URI_LOCAL);
 
 
 // MIDDLEWARES

@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 // IMPORT ROUTES
 const userRouter = require('./router/user.router');
 const tweetRouter = require("./router/tweet.rooter");
+const messageRouter = require("./router/message.rooter");
 
 
 
@@ -23,6 +24,7 @@ app.use(express.json());
 // PREFIX
 app.use('/api/user', userRouter);
 app.use("/api/tweet", tweetRouter);
+app.use("/api/message", messageRouter);
 
 
 // MIDDLEWARE DE GESTION D'ERREURS

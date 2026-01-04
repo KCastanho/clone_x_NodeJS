@@ -120,7 +120,7 @@ const followUser = async (req, res, next) => {
       return next(createError(409, "You are already following this user"));
     }
 
-    // ✅ Mise à jour des 2 côtés
+    // Mise à jour des 2 côtés
     await Promise.all([
       ModelUser.findByIdAndUpdate(currentUserId, {
         $addToSet: { following: targetUserId }, // addToSet évite les doublons

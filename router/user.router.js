@@ -8,42 +8,30 @@ const verifyToken = require('../middlewares/auth');
 
 
 
-/* =========================
-   AUTH
-========================= */
+// AUTH
 router.post("/register", UserController.register);
 router.post("/login", UserController.login);
 router.post("/logout", verifyToken, UserController.logout);
 
-/* =========================
-   USERS (admin / liste)
-========================= */
+// USERS (admin / liste)
 router.get("/all", verifyToken, UserController.getAll); // admin only (checkIsAdmin est dans le controller)
 
-/* =========================
-   FOLLOW / UNFOLLOW
-========================= */
+// FOLLOW / UNFOLLOW
 router.post("/follow/:id", verifyToken, UserController.followUser);
 router.post("/unfollow/:id", verifyToken, UserController.unfollowUser);
 
-/* =========================
-   FOLLOWERS / FOLLOWING
-========================= */
+// FOLLOWERS / FOLLOWING
 // Public: voir followers / following d'un user
 router.get("/followers/:id", verifyToken, UserController.getFollowers);
 router.get("/following/:id", verifyToken, UserController.getFollowing);
 
-// Privé: voir MES followers
+// Privé: voir mes followers
 router.get("/me/followers", verifyToken, UserController.getMyFollowers);
 
-/* =========================
-   STATS
-========================= */
+// STATS
 router.get("/stats/:id", verifyToken, UserController.getUserStats);
 
-/* =========================
-   UPDATE / DELETE USER
-========================= */
+// UPDATE / DELETE USER
 router.patch("/update/:id", verifyToken, UserController.updateUser);
 router.delete("/delete/:id", verifyToken, UserController.deleteUser);
 
